@@ -1,7 +1,5 @@
 library flutter_love_provider;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:flutter_love/flutter_love.dart';
+export 'src/dispatch_x.dart' show DispatchX;
+export 'src/system_providers.dart' show SystemProviders;
