@@ -1,5 +1,5 @@
 name: flutter_love_provider
-description: Provide flutter widgets to supporting solution base on flutter, love and provider.
+description: Provide flutter widgets for supporting solution base on flutter, love and provider.
 version: 0.1.0-beta.1
 homepage: https://github.com/LoveCommunity/flutter_love_provider
 
@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  love: ^0.1.0
+  flutter_love: ^0.1.0-beta.8
+  provider: ^6.0.0
+  nested: ^1.0.0
 
 dev_dependencies:
   flutter_test:
