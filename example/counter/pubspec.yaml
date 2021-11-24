@@ -1,5 +1,5 @@
 name: counter
-description: A counter example that using flutter, love and provider.
+description: A counter example that use `flutter_love_provider`.
 publish_to: 'none' 
 version: 1.0.0+1
 
