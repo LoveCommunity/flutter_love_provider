@@ -13,6 +13,7 @@ Descendant widget can access `state` and `dispatch` from `context`:
 System<int, CounterEvent> createCounterSystem() { ... }
 
 class UseSystemProvidersPage extends StatelessWidget {
+  const UseSystemProvidersPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class UseSystemProvidersPage extends StatelessWidget {
         return CounterPage(
           title: 'Use System Providers Page',
           count: state,
-          onIncreasePressed: () => context.dispatch<CounterEvent>(Increment()), // <- access dispatch
+          onIncreasePressed: () => context
+            .dispatch<CounterEvent>(Increment()), // <- access dispatch
         );
       },
     );
