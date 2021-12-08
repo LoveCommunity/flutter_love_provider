@@ -107,8 +107,8 @@ class _SystemProvidersState<S, E> extends SingleChildState<SystemProviders<S, E>
 
   late System<S, E> _system;
   late S _state;
-  late final StreamController<S> _controller = StreamController();
-  late final Stream<S> _states = _controller.stream.asBroadcastStream();
+  late final StreamController<S> _controller = StreamController.broadcast(sync: true);
+  late final Stream<S> _states = _controller.stream;
   late Dispatch<E> _dispatch;
   late Disposer _disposer;
 
