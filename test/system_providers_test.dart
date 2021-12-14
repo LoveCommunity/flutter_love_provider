@@ -285,6 +285,19 @@ void main() {
       ]);
       expect(find.text('ab'), findsOneWidget);
     });
+
+    testWidgets('builder', (tester) async {
+
+      await tester.pumpWidget(SystemProviders(
+        create: (_) => createSystem(),
+        builder: (context, _) {
+          final state = context.watch<String>();
+          return Text(state, textDirection: TextDirection.ltr,);
+        },
+      ));
+
+      expect(find.text('a'), findsOneWidget);
+    });
   });
   
   group('SystemProviders.value', () {
@@ -573,6 +586,22 @@ void main() {
       expect(find.text('ab'), findsOneWidget);
 
     });
+
+    testWidgets('builder', (tester) async {
+
+      final system = createSystem();
+
+      await tester.pumpWidget(SystemProviders.value(
+        value: system,
+        builder: (context, _) {
+          final state = context.watch<String>();
+          return Text(state, textDirection: TextDirection.ltr,);
+        },
+      ));
+
+      expect(find.text('a'), findsOneWidget);
+    });
+    
   });
 
 }
