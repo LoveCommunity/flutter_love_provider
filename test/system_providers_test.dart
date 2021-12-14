@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_love_provider/flutter_love_provider.dart';
 import 'package:provider/provider.dart';
-import '../utils/utils.dart';
 
 void main() {
 
@@ -577,3 +576,12 @@ void main() {
   });
 
 }
+
+System<String, String> createSystem() {
+  return System<String, String>
+    .create(initialState: 'a')
+    .add(reduce: reduce);
+}
+
+String reduce(String state, String event)
+  => '$state|$event';
