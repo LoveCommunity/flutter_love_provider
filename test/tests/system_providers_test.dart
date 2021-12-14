@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_love/flutter_love.dart';
 import 'package:flutter_love_provider/flutter_love_provider.dart';
 import 'package:provider/provider.dart';
 import '../utils/utils.dart';
