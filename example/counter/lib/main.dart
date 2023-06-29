@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_love_provider/flutter_love_provider.dart';
-import 'package:provider/provider.dart';
 
 // typedef CounterState = int;
 
