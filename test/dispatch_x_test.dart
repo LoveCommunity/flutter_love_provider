@@ -8,16 +8,16 @@ void main() {
 
   testWidgets('context.readDispatch', (tester) async {
 
-    late Dispatch<String> _dispatch1;
-    late Dispatch<String> _dispatch2;
+    late Dispatch<String> dispatch1;
+    late Dispatch<String> dispatch2;
 
     await tester.pumpWidget(Provider<Dispatch<String>>(
       create: (_) => Dispatch((_) {}),
       child: Builder(builder:  (context) {
         return GestureDetector(
           onTap: () {
-            _dispatch1 = context.read<Dispatch<String>>();
-            _dispatch2 = context.readDispatch<String>();
+            dispatch1 = context.read<Dispatch<String>>();
+            dispatch2 = context.readDispatch<String>();
           },
           child: const ColoredBox(color: Color(0x00000000),),
         );
@@ -27,7 +27,7 @@ void main() {
     await tester.tap(find.byType(ColoredBox));
     await tester.pump();
 
-    expect(identical(_dispatch1, _dispatch2), true);
+    expect(identical(dispatch1, dispatch2), true);
 
   });
 
@@ -49,7 +49,7 @@ void main() {
       }),
     ));
 
-    expect(events, []);
+    expect(events, <String>[]);
 
     await tester.tap(find.byType(ColoredBox));
     await tester.pump();

@@ -74,20 +74,17 @@ class SystemProviders<S, E> extends SingleChildStatefulWidget {
   );
 
   const SystemProviders({
-    Key? key,
+    super.key,
     required this.create,
     this.provideState = true,
     this.provideStates = false,
     this.provideDispatch = true,
     this.stateEquals,
     this.builder,
-    Widget? child,
+    super.child,
   }) : assert(
     provideState || provideStates || provideDispatch, 
     'SystemProviders should at least provide one of `state`, `states` or `dispatch`'
-  ), super(
-    key: key,
-    child: child,
   );
 
   final Create<System<S, E>> create;
@@ -98,8 +95,8 @@ class SystemProviders<S, E> extends SingleChildStatefulWidget {
   final TransitionBuilder? builder;
 
   @override
-  _SystemProvidersState<S, E> createState() {
-    return _SystemProvidersState();
+  createState() {
+    return _SystemProvidersState<S, E>();
   }
 }
 
@@ -156,30 +153,30 @@ class _SystemProvidersState<S, E> extends SingleChildState<SystemProviders<S, E>
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    Widget? _child = widget.builder != null 
+    Widget? localChild = widget.builder != null 
         ? Builder(builder: (context) => widget.builder!(context, child))
         : child;
     if (widget.provideDispatch) {
-      _child = Provider.value(
+      localChild = Provider.value(
         value: _dispatch,
-        child: _child,
+        child: localChild,
       );
     }
     if (widget.provideStates) {
-      _child = Provider.value(
+      localChild = Provider.value(
         value: _states,
-        child: _child,
+        child: localChild,
       );
     }
     if (widget.provideState) {
-      _child = StreamProvider.value(
+      localChild = StreamProvider.value(
         value: _states,
         initialData: _state,
         lazy: false,
-        child: _child,
+        child: localChild,
       );
     }
-    return _child!;
+    return localChild!;
   }
 }
 

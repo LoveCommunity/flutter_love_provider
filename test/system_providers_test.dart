@@ -164,8 +164,9 @@ void main() {
 
       await tester.pumpWidget(SystemProviders(
         create: (_) => createSystem()
-          .onRun(effect: (_, _dispatch) { 
-            dispatch = _dispatch; 
+          .onRun(effect: (_, localDispatch) { 
+            dispatch = localDispatch;
+            return null; 
           }),
         child: Builder(builder: (context) {
           final state = context.watch<String>();
@@ -198,7 +199,10 @@ void main() {
         return System<String, String>
           .create(initialState: 'a')
           .add(reduce: (_, event) => event)
-          .onRun(effect: (_, _dispatch) { dispatch = _dispatch; });
+          .onRun(effect: (_, localDispatch) { 
+            dispatch = localDispatch;
+            return null; 
+          });
       }
 
       await tester.pumpWidget(SystemProviders(
@@ -241,7 +245,10 @@ void main() {
         return System<String, String>
           .create(initialState: 'a')
           .add(reduce: (_, event) => event)
-          .onRun(effect: (_, _dispatch) { dispatch = _dispatch; });
+          .onRun(effect: (_, localDispatch) { 
+            dispatch = localDispatch;
+            return null; 
+          });
       }
 
       await tester.pumpWidget(SystemProviders<String, String>(
@@ -468,7 +475,10 @@ void main() {
       late Dispatch<String> dispatch;
 
       final system = createSystem()
-        .onRun(effect: (_, _dispatch) { dispatch = _dispatch; });
+        .onRun(effect: (_, localDispatch) { 
+          dispatch = localDispatch;
+          return null; 
+        });
       
       await tester.pumpWidget(SystemProviders.value(
         value: system,
@@ -501,7 +511,10 @@ void main() {
       final system = System<String, String>
         .create(initialState: 'a')
         .add(reduce: (_, event) => event)
-        .onRun(effect: (_, _dispatch) { dispatch = _dispatch; });
+        .onRun(effect: (_, localDispatch) { 
+          dispatch = localDispatch;
+          return null; 
+        });
 
       await tester.pumpWidget(SystemProviders.value(
         value: system,
@@ -542,7 +555,10 @@ void main() {
       final system = System<String, String>
         .create(initialState: 'a')
         .add(reduce: (_, event) => event)
-        .onRun(effect: (_, _dispatch) { dispatch = _dispatch; });
+        .onRun(effect: (_, localDispatch) { 
+          dispatch = localDispatch;
+          return null; 
+        });
 
       await tester.pumpWidget(SystemProviders<String, String>.value(
         value: system,

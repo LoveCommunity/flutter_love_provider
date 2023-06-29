@@ -14,7 +14,7 @@ System<int, CounterEvent> createCounterSystem() {
     .on<Increment>(
       reduce: (state, event) => state + 1,
       effect: (state, event, dispatch) async {
-        await Future.delayed(const Duration(seconds: 3));
+        await Future<void>.delayed(const Duration(seconds: 3));
         dispatch(Decrement());
       },
     )
@@ -35,7 +35,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+  const MyApp({ super.key });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 }
 
 class UseSystemProvidersPage extends StatelessWidget {
-  const UseSystemProvidersPage({ Key? key }) : super(key: key);
+  const UseSystemProvidersPage({ super.key });
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +68,11 @@ class UseSystemProvidersPage extends StatelessWidget {
 class CounterPage extends StatelessWidget {
 
   const CounterPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.count,
     required this.onIncreasePressed,
-  }) : super(key: key);
+  });
 
   final String title;
   final int count;
